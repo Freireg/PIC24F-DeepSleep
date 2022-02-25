@@ -3,7 +3,7 @@
 // 'C' source line config statements
 
 // CONFIG4
-#pragma config DSWDTPS = DSWDTPS3       // Deep Sleep Watchdog Timer Postscale Select bits (1: 256 (8.3 mS))
+#pragma config DSWDTPS = DSWDTPSF       // Deep Sleep Watchdog Timer Postscale Select bits (1:1048576 (33.825 Secs))
 #pragma config DSWDTOSC = LPRC          // DSWDT Reference Clock Select (DSWDT uses LPRC as reference clock)
 #pragma config DSBOREN = OFF            // Deep Sleep BOR Enable bit (DSBOR Disabled)
 #pragma config DSWDTEN = ON             // Deep Sleep Watchdog Timer Enable (DSWDT Enabled)
@@ -58,15 +58,9 @@
 int main(void) {
     
     TRISCbits.TRISC5 = 0;
-    /* Enable RTC? */
-    
-    RCFGCALbits.RTCEN = 1;
-    ALCFGRPTbits.ALRMEN = 1;
-    ALCFGRPTbits.AMASK = 0b0001;
-    
+      
     while(1)
     {
-        
         PORTCbits.RC5 = 1;
         __delay_ms(500);
         PORTCbits.RC5 = 0;
@@ -85,8 +79,8 @@ int main(void) {
 
 void enterDeepSleep(void)
 {
-    RCONbits.DPSLP = 0;
-    DSWAKE = 0;
+    //RCONbits.DPSLP = 0;
+    //DSWAKE = 0;
     RCONbits.RETEN = 1;
     
     /* Required Deep Sleep sequence */
