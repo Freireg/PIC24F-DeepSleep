@@ -1,11 +1,12 @@
+
 // PIC24FJ128GA204 Configuration Bit Settings
 
 // 'C' source line config statements
 
 // CONFIG4
-#pragma config DSWDTPS = DSWDTPSF       // Deep Sleep Watchdog Timer Postscale Select bits (1:1048576 (33.825 Secs))
+#pragma config DSWDTPS = DSWDTPSD       // Deep Sleep Watchdog Timer Postscale Select bits (1:262114 (8.456 Secs))
 #pragma config DSWDTOSC = LPRC          // DSWDT Reference Clock Select (DSWDT uses LPRC as reference clock)
-#pragma config DSBOREN = OFF            // Deep Sleep BOR Enable bit (DSBOR Disabled)
+#pragma config DSBOREN = ON             // Deep Sleep BOR Enable bit (DSBOR Enabled)
 #pragma config DSWDTEN = ON             // Deep Sleep Watchdog Timer Enable (DSWDT Enabled)
 #pragma config DSSWEN = ON              // DSEN Bit Enable (Deep Sleep is controlled by the register bit DSEN)
 #pragma config PLLDIV = DISABLED        // USB 96 MHz PLL Prescaler Select bits (PLL Disabled)
@@ -36,9 +37,9 @@
 #pragma config WDTPS = PS32768          // Watchdog Timer Postscaler Select (1:32,768)
 #pragma config FWPSA = PR128            // WDT Prescaler Ratio Select (1:128)
 #pragma config WINDIS = OFF             // Windowed WDT Disable (Standard Watchdog Timer)
-#pragma config FWDTEN = ON              // Watchdog Timer Enable (WDT enabled in hardware)
+#pragma config FWDTEN = OFF             // Watchdog Timer Enable (WDT disabled in hardware; SWDTEN bit disabled)
 #pragma config ICS = PGx1               // Emulator Pin Placement Select bits (Emulator functions are shared with PGEC1/PGED1)
-#pragma config LPCFG = OFF              // Low power regulator control (Disabled - regardless of RETEN)
+#pragma config LPCFG = ON               // Low power regulator control (Low voltage regulator controlled by RETEN bit)
 #pragma config GWRP = OFF               // General Segment Write Protect (Write to program memory allowed)
 #pragma config GCP = OFF                // General Segment Code Protect (Code protection is disabled)
 #pragma config JTAGEN = ON              // JTAG Port Enable (Enabled)
@@ -47,6 +48,7 @@
 // Use project enums instead of #define for ON and OFF.
 
 #include <xc.h>
+
 
 
 #define _XTAL_FREQ 8000000
