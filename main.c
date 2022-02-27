@@ -59,8 +59,12 @@
 
 int main(void) {
     
-    TRISCbits.TRISC5 = 0;
-      
+    TRISCbits.TRISC5 = 0; //Enabling RC5 as a output pin
+    
+    IEC0bits.INT0IE = 1; //Enable external interrupt in the INT0 pin RP7
+    IPC0bits.INT0IP = 0b111; //External Interrupt 0 Priority bits (Priority 7 - Highest)
+    INTCON2bits.INT0EP = 0; //External Interrupt 0 Edge Detect Polarity Select bit (Positive edge)
+    
     while(1)
     {
         PORTCbits.RC5 = 1;
