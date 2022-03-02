@@ -1,2 +1,1 @@
-build/default/production/main.o:  \
-main.c 
+build/default/production/main.o: main.c

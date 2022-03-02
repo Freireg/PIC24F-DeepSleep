@@ -3,7 +3,8 @@
         {
             "name": "Curiosity",
             "includePath": [
-                "${workspaceFolder}/**"                             
+                "${workspaceFolder}/**",
+                "C:\\Program Files\\Microchip\\**"                             
             ],
             "defines": [
                 "_DEBUG",
